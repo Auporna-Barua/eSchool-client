@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import SocialLogin from '../../sharedComponents/SocialLogin/SocialLogin';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
