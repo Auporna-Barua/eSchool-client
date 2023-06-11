@@ -5,9 +5,9 @@ import "./banner.css";
 
 const Banner = () => {
     return (
-        <Carousel className='max-w-screen-xl h-5/6'>
+        <Carousel className='max-w-full h-5/6'>
             <div>
-                <img className='relative z-10' src="https://i.ibb.co/hWK3Lfg/8-Easy-Guitar-Songs-For-Every-Beginner-2.png" />
+                <img className='relative z-10' src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1686503985/slider3_gwollc.jpg" />
                 <div className='absolute top-0 bg-gradient-to-r from-teal-300  z-20 w-full h-full opacity-60'></div>
                 <div className='absolute text-2xl font-bold text-white z-40 top-56 left-20 w-2/4'>
                     <h3 className='text-start font-bold text-5xl text-yellow-300'>Learn Flute..!</h3>
@@ -21,7 +21,7 @@ const Banner = () => {
                 </div>
             </div>
             <div>
-                <img className='relative z-10' src="https://i.ibb.co/KqHQFNQ/8-Easy-Guitar-Songs-For-Every-Beginner-3.png" />
+                <img className='relative z-10' src="https://res.cloudinary.com/db8l1ulfq/image/upload/v1686503985/slider1_nenoqk.jpg" />
                 <div className='absolute top-0 bg-gradient-to-r from-teal-300  z-20 w-full h-full opacity-60'></div>
                 <div className='absolute text-2xl font-bold text-white z-40 top-56 left-20 w-2/4'>
                     <h3 className='text-start font-bold text-5xl text-yellow-300'>Learn Piano..!</h3>
