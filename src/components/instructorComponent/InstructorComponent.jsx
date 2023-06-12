@@ -3,8 +3,8 @@ import { AiFillLinkedin, AiOutlineCalendar } from 'react-icons/ai';
 import { FcManager } from 'react-icons/fc';
 import { BsFacebook, BsInstagram } from 'react-icons/bs';
 
-function InstructorComponent() {
-
+function InstructorComponent({ page }) {
+    console.log(page);
 
     return (
         <div className="card card-compact  bg-base-100 shadow-xl">
@@ -12,17 +12,20 @@ function InstructorComponent() {
             <div className="card-body">
                 <h2 className="card-title justify-center font-bold text-gray-500">Alfredo Torres</h2>
                 <p className='text-center font-bold text-gray-500'> Piano Instructor</p>
-                <div className='flex items-center justify-between'>
+                {
+                    page && <p className='text-center'>email: arjurana20@gmail.com</p>
+                }
 
+                <div className='flex items-center justify-between'>
                     <div className="card-actions justify-end">
                         <div className='flex items-center gap-2'><FcManager size={20} /> <span className='text-md font-bold capitalize text-gray-500'>323 students</span></div>
                     </div>
                     <div className="card-actions justify-start">
                         <div className='flex items-center gap-2'>
-                            <BsFacebook size={20} color='#FF7703' /> 
-                            <AiFillLinkedin size={20} color='#FF7703' /> 
-                            <BsInstagram size={20} color='#FF7703' /> 
-                            </div>
+                            <BsFacebook size={20} color='#FF7703' />
+                            <AiFillLinkedin size={20} color='#FF7703' />
+                            <BsInstagram size={20} color='#FF7703' />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,8 @@ import MainLayout from "../Layouts/MainLayout";
 import Login from "../pages/Authentication/Login";
 import Registration from "../pages/Authentication/Registration";
 import Error from "../pages/Error/Error"
+import Instructor from "../pages/Instructor/Instructor";
+import Classes from "../pages/Classes/Classes";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
             {
                 path: '/signUp',
                 element: <Registration />
+            },
+            {
+                path: '/instructors',
+                element: <Instructor />
+            },
+            {
+                path: '/classes',
+                element: <Classes />
             }
         ]
     },
