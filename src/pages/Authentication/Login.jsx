@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Tittle from '../../Common_Component\'s/Tittle';
+import Tittle from '../../components/metaTitle/Title';
 import Lottie from "lottie-react";
 import loginMotion from '../../assets/LoginMotion.json'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -47,7 +47,7 @@ const Login = () => {
         <>
             <Tittle heading={'LogIn'}></Tittle>
             <div className="hero min-h-screen w-9/12 hover:w-10/12 duration-700 mx-auto">
-                <div className="hero-content flex-col lg:flex-row w-[100%] border-2 hover:rounded-lg hover:border-teal-500 duration-700">
+                <div className="hero-content flex-col lg:flex-row w-[100%] border-2 hover:rounded-lg hover:border-[#FF7703] duration-700">
                     <div className="text-center lg:text-left w-[50%]">
                         <Lottie animationData={loginMotion}></Lottie>
                     </div>
@@ -56,14 +56,14 @@ const Login = () => {
                     <form onSubmit={handleLoginData} className='p-10 space-y-4 w-[500px]'>
                         <div className='flex flex-col'>
                             <label htmlFor="email"><span className='font-bold text-lg'>Email:</span></label>
-                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="email" name="email" id="" placeholder='Type your Email' required />
+                            <input className='border-2 border-[#FF7703] p-2 bg-slate-100 rounded' type="email" name="email" id="" placeholder='Type your Email' required />
                         </div>
 
                         <div className='flex flex-col'>
                             <label htmlFor="password"><span className='font-bold text-lg'>Password:</span></label>
                             <div className='flex items-center'>
-                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded w-full' type={show ? 'text' : 'password'} name="password" id="" placeholder='Type your password' required />
-                                <p onClick={() => setShow(!show)} className='border-2 p-3 ms-1 border-teal-500 rounded-md'>{
+                                <input className='border-2 border-[#FF7703] p-2 bg-slate-100 rounded w-full' type={show ? 'text' : 'password'} name="password" id="" placeholder='Type your password' required />
+                                <p onClick={() => setShow(!show)} className='border-2 p-3 ms-1 border-[#FF7703] rounded-md'>{
                                     show ? <span><FaEyeSlash className='text-stone-400' /></span> : <span><FaEye className='text-stone-400' /></span>
                                 }</p>
                             </div>
@@ -74,7 +74,7 @@ const Login = () => {
                         </div>
 
                         <div>
-                            <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
+                            <input className='btn btn-outline hover:bg-transparent hover:text-white hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
                         </div>
 
                         <div className="divider">OR</div>
@@ -83,7 +83,7 @@ const Login = () => {
                             <SocialLogin></SocialLogin>
                         </div>
                         <div>
-                            <p className=' text-teal-500 font-bold text-center'>Don't have any account?<Link className='hover:underline' to='/signUp'>Create an account</Link></p>
+                            <p className=' text-[#FF7703] font-bold text-center'>Don't have any account? <Link className='hover:underline' to='/signUp'>Create an account</Link></p>
                         </div>
                     </form>
                 </div>

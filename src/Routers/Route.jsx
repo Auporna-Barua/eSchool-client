@@ -5,23 +5,27 @@ import Home from "../pages/Home/Home";
 // import DashboardLayout from "../Layouts/DashboardLayout";
 // import AllUsers from "../Pages/AdminPanel/Allusers";
 import MainLayout from "../Layouts/MainLayout";
+import Login from "../pages/Authentication/Login";
+import Registration from "../pages/Authentication/Registration";
+import Error from "../pages/Error/Error"
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
                 element: <Home />
             },
-            // {
-            //     path: '/logIn',
-            //     element: <LoginPage></LoginPage>
-            // },
-            // {
-            //     path: '/signUp',
-            //     element: <SignUp></SignUp>
-            // }
+            {
+                path: '/logIn',
+                element: <Login></Login>
+            },
+            {
+                path: '/signUp',
+                element: <Registration />
+            }
         ]
     },
     // {

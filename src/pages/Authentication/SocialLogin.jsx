@@ -43,7 +43,7 @@ const SocialLogin = () => {
     };
     return (
         <div className='mt-4 flex justify-center'>
-            <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
+            <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-white hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
         </div>
     );
 };

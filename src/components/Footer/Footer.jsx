@@ -7,7 +7,7 @@ const Footer = () => {
         <>
             <footer className="footer p-10 bg-[#FF7703] text-base-content">
                 <div className='flex'>
-                    <img className='w-28 h-28' src={logo} alt="" />
+                    <img className='w-32 h-24' src={logo} alt="" />
                     <div>
                         <p className='font-bold text-2xl text-white'>Music School<br /><span className='text-sm font-medium'>Providing reliable tech since 2022</span></p>
                         <div className='mt-3 flex space-x-4'>
