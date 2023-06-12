@@ -1,15 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
-// import LoginPage from "../Pages/LoginPage/LoginPage";
-// import SignUp from "../Pages/SignUpPage/SignUp";
-// import DashboardLayout from "../Layouts/DashboardLayout";
-// import AllUsers from "../Pages/AdminPanel/Allusers";
 import MainLayout from "../Layouts/MainLayout";
 import Login from "../pages/Authentication/Login";
 import Registration from "../pages/Authentication/Registration";
 import Error from "../pages/Error/Error"
 import Instructor from "../pages/Instructor/Instructor";
 import Classes from "../pages/Classes/Classes";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import AllUsers from "../pages/AdminPanel/AllUsers";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -38,16 +36,16 @@ const router = createBrowserRouter([
             }
         ]
     },
-    // {
-    //     path: 'dashboard',
-    //     element: <DashboardLayout></DashboardLayout>,
-    //     children: [
-    //         {
-    //             path: '/dashboard/allUsers',
-    //             element: <AllUsers></AllUsers>
-    //         }
-    //     ]
-    // }
+    {
+        path: 'dashboard',
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: '/dashboard/allUsers',
+                element: <AllUsers />
+            }
+        ]
+    }
 ]);
 
 export default router

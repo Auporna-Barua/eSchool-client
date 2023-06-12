@@ -12,10 +12,8 @@ function ClassComponent() {
                 <h2 className="card-title">Guitar classes</h2>
                 <p> Nunc rhoncus libero vitae urna commodo faucibus. Mauris at feugiat est, sit amet.?</p>
                 <div className="card-actions justify-end">
-                    <div className='flex items-center gap-2'><AiOutlineCalendar size={20} /> <span className='text-md font-bold capitalize text-gray-500'>3 months</span></div> 
+                    <div className='flex items-center gap-2'><AiOutlineCalendar size={20} /> <span className='text-md font-bold capitalize text-gray-500'>3 months</span></div>
                     <div className='flex items-center gap-2'><FcManager size={20} /> <span className='text-md font-bold capitalize text-gray-500'>323 students</span></div>
-
-
                 </div>
             </div>
         </div>

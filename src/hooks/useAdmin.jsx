@@ -4,7 +4,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const useAdmin = () => {
     const { user } = useContext(AuthContext)
-
     const token = localStorage.getItem('access-token');
     const { refetch, data: isAdmin, isLoading: isAdminLoading } = useQuery({
         queryKey: ['allUsers', user?.email],
@@ -18,8 +17,10 @@ const useAdmin = () => {
                     authorization: `bearer ${token}`
                 }
             })
-            const data = await res.json()
-            return data.admin
+            console.log("res", res);
+            const data = await res.json();
+            console.log("data", data);
+            return data.role
         }
     })
     return [refetch, isAdmin, isAdminLoading]
