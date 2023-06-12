@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { FaUsersCog, FaUserShield, FaUser, FaUserGraduate, FaBook, FaBookReader, FaSwatchbook, FaBookMedical, FaBookOpen, FaHome, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
-import useAdmin from '../Hooks/useAdmin';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
 
