@@ -9,11 +9,11 @@ const Footer = () => {
                 <div className='flex'>
                     <img className='w-32 h-24' src={logo} alt="" />
                     <div>
-                        <p className='font-bold text-2xl text-white'>Music School<br /><span className='text-sm font-medium'>Providing reliable tech since 2022</span></p>
+                        <p className='font-bold text-2xl text-white'>Music School<br /><span className='text-sm font-medium'>Cox's Bazar, Bangladesh</span></p>
                         <div className='mt-3 flex space-x-4'>
-                            <FaFacebook className='w-7 h-7'></FaFacebook>
-                            <FaYoutube className='w-7 h-7'></FaYoutube>
-                            <FaTwitter className='w-7 h-7'></FaTwitter>
+                            <FaFacebook className='w-7 h-7 text-white'></FaFacebook>
+                            <FaYoutube className='w-7 h-7 text-white'></FaYoutube>
+                            <FaTwitter className='w-7 h-7 text-white'></FaTwitter>
                         </div>
                     </div>
 
@@ -37,13 +37,13 @@ const Footer = () => {
                     <a className="link link-hover font-medium text-white">Terms of use</a>
                     <a className="link link-hover font-medium text-white">Privacy policy</a>
                     <a className="link link-hover font-medium text-white">Cookie policy</a>
-                    <p className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-white hover:bg-yellow-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 hover:rounded-md'>Call Us: <span>+880-190-888-888</span> </p>
+                    <p className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-white hover:bg-yellow-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 hover:rounded-md'>Call Us: <span>+8801881220413</span> </p>
                 </div>
 
             </footer>
             <footer className="footer items-center p-4 bg-black text-neutral-content">
                 <div className="mx-auto ">
-                    <p>Copyright © 2023 - All right reserved</p>
+                    <p>Copyright © 2023 - All right reserved <span className='text-[#FF7703] cursor-pointer font-bold'>Auporna Barua</span> </p>
                 </div>
             </footer>
         </>
