@@ -1,7 +1,7 @@
 import React from 'react'
-import ClassComponent from '../../../components/ClassComponent/ClassComponent'
 import "../../../App.css"
-function Classes() {
+import InstructorComponent from '../../../components/instructorComponent/InstructorComponent'
+function Instructors() {
     const classes = [
         {
             class_name: "Yoga for Beginners",
@@ -50,17 +50,17 @@ function Classes() {
         <div>
             <div className=' w-10/12 mx-auto text-center my-10'>
 
-                <h4 className='text-xl text-[#FF7703] font-bold'>Our Classes</h4>
-                <h2 className='text-4xl font-bold text-gray-500'>Most Popular Classes</h2>
+                <h4 className='text-xl text-[#FF7703] font-bold'>Our Instructors</h4>
+                <h2 className='text-4xl font-bold text-gray-500'>Meet Popular Instructors</h2>
             </div>
             <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
-                <ClassComponent />
-                <ClassComponent />
-                <ClassComponent />
-                <ClassComponent />
-                <ClassComponent />
-                <ClassComponent />
-               
+                <InstructorComponent />
+                <InstructorComponent />
+                <InstructorComponent />
+                <InstructorComponent />
+                <InstructorComponent />
+                <InstructorComponent />
+
 
             </div>
 
@@ -68,4 +68,4 @@ function Classes() {
     )
 }
 
-export default Classes
+export default Instructors
