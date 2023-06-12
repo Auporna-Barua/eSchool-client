@@ -1,7 +1,7 @@
 import React from 'react';
-import "./error.css";
+
 import { Link } from 'react-router-dom';
-import Tittle from '../../components/metaTitle/Title';
+
 const NotFound = () => {
     return (
         <section>
@@ -188,9 +188,9 @@ const NotFound = () => {
                         </div>
                         <p class="text-sm md:text-base text-yellow-300 p-2 mb-4">The site you were looking for doesn't exist.
                         </p>
-                        <a href="/"
+                        <Link to="/"
                             class="bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-                            Go Home</a>
+                            Go Home</Link>
                     </div>
                 </div>
             </div>
