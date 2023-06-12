@@ -31,7 +31,7 @@ const Registration = () => {
                         displayName: name,
                         photoURL: photo,
                     })
-                    const savedUser = { name: name, email: email }
+                    const savedUser = { name: name, email: email, role: "student" }
 
                     fetch('http://localhost:5000/users', {
                         method: 'POST',
@@ -83,8 +83,21 @@ const Registration = () => {
 
                             <div className='flex flex-col'>
                                 <label htmlFor="email"><span className='font-bold text-lg'>Email:</span></label>
-                                <input className='border-2 border-[#FF7703] p-2 bg-slate-100 rounded' type="email" {...register("email", { required: true })} name="email" id="" placeholder='Type your Email' required />
+                                <input className='border-2 border-[#FF7703] p-2 bg-slate-100 rounded' type="email" {...register("email", {
+                                    required: {
+                                        value: true,
+                                        message: 'Email is required*'
+                                    },
+                                    pattern: {
+                                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                        message: 'Provide a Valid Email',
+                                    }
+                                })} name="email" id="" placeholder='Type your Email' required />
                             </div>
+                            <p className=' text-red-500'>
+                                {errors.email?.type === 'required' && <span>{errors.email.message}</span>}
+                                {errors.email?.type === 'pattern' && <span>{errors.email.message}</span>}
+                            </p>
                         </div>
 
                         <div className='flex gap-2'>
