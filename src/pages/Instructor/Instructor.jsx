@@ -11,18 +11,7 @@ function Instructor() {
           </div>
           <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
               <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
-              <InstructorComponent page />
+             
 
 
           </div>

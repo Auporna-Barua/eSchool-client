@@ -17,9 +17,7 @@ const useAdmin = () => {
                     authorization: `bearer ${token}`
                 }
             })
-            console.log("res", res);
             const data = await res.json();
-            console.log("data", data);
             return data.role
         }
     })

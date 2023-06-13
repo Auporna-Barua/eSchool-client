@@ -4,7 +4,6 @@ import { FcManager } from 'react-icons/fc';
 import { BsFacebook, BsInstagram } from 'react-icons/bs';
 
 function InstructorComponent({ page }) {
-    console.log(page);
 
     return (
         <div className="card card-compact  bg-base-100 shadow-xl">

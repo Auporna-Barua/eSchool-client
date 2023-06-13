@@ -31,7 +31,6 @@ function ManageClass() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data submit", data);
         if (data.modifiedCount) {
           Swal.fire({
             icon: 'success',
@@ -45,7 +44,6 @@ function ManageClass() {
 
   };
 
-  console.log("setId", id);
   // approved classes functionality
   const handleApproved = id => {
     fetch(`http://localhost:5000/manageClass/approved/${id}`, {
@@ -57,7 +55,6 @@ function ManageClass() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -81,7 +78,6 @@ function ManageClass() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.modifiedCount) {
           refetch();
           Swal.fire({

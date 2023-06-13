@@ -16,7 +16,6 @@ const SocialLogin = () => {
         createGoogleUser()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
 
                 const savedUser = { name: loggedInUser.displayName, email: loggedInUser.email }
 
@@ -29,7 +28,6 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         navigate(from, { replace: true });
 
                     })

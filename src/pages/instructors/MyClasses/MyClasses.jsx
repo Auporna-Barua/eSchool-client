@@ -19,7 +19,6 @@ function MyClasses() {
     return res.json();
   })
   const handleClassEdit = async (id) => {
-    console.log("hi", id);
     navigation(`/dashboard/editClass/${id}`)
   }
   return (

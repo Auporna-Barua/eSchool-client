@@ -28,7 +28,6 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -78,7 +77,6 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.deletedCount == 1) {
                     refetch();
                     Swal.fire({

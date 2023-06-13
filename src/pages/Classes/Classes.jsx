@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Class from '../../components/Classes/Class'
+import axios from 'axios';
 
 function Classes() {
+    const [classes, setClasses] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:5000/approveClasses`)
+            .then(function (response) {
+
+                setClasses(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+    }, [])
     return (
         <div>
             <div className=' w-10/12 mx-auto text-center my-10'>
@@ -10,20 +26,9 @@ function Classes() {
                 <h2 className='text-4xl font-bold text-gray-500'>All Classes</h2>
             </div>
             <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
-
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
-                <Class />
+                {
+                    classes && classes.map(course => <Class key={course._id} course={course} />)
+                }
 
             </div>
 

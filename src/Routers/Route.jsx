@@ -13,6 +13,8 @@ import ManageClasses from "../pages/AdminPanel/ManageClasses/ManageClasses";
 import AddClass from "../pages/instructors/AddClass/AddClass";
 import MyClasses from "../pages/instructors/MyClasses/MyClasses";
 import EditClass from "../pages/instructors/EditClass/EditClass";
+import SelectedClass from "../pages/MySelectedClass/SelectedClass";
+import EnrolledClass from "../pages/EnrolledClasses/EnrolledClass";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -96,6 +98,22 @@ const router = createBrowserRouter([
                     fetch(
                         `http://localhost:5000/editClass/${params.id}`
                     ),
+            },
+            {
+                path: '/dashboard/selectedclass',
+                element: (
+                    <PrivateRoute>
+                        <SelectedClass />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: '/dashboard/enrolledClass',
+                element: (
+                    <PrivateRoute>
+                        <EnrolledClass />
+                    </PrivateRoute>
+                )
             },
         ]
     }
