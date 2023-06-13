@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { FaRegEdit } from 'react-icons/fa';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Tittle from '../../../components/metaTitle/Title';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 function ManageClass() {
   const token = localStorage.getItem('access-token');
+  const [id, setId] = useState("")
   const { user } = useContext(AuthContext);
-
   const { data: classes = [], refetch } = useQuery(['classes'], async () => {
     const res = await fetch(`http://localhost:5000/myClasses/${user.email}`, {
       headers: {
@@ -19,8 +20,32 @@ function ManageClass() {
   })
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
-    reset()
+    fetch(`http://localhost:5000/manageClass/feedback/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `bearer ${token}`
+
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log("data submit", data);
+        if (data.modifiedCount) {
+          Swal.fire({
+            icon: 'success',
+            text: 'Add new feedback successful',
+          })
+
+          reset();
+
+        };
+      })
+
   };
+
+  console.log("setId", id);
   // approved classes functionality
   const handleApproved = id => {
     fetch(`http://localhost:5000/manageClass/approved/${id}`, {
@@ -92,7 +117,7 @@ function ManageClass() {
             <tbody>
               {/* row 1 */}
               {
-                classes && classes.map(course => <>   <tr>
+                classes && classes.map(course => <tr key={course._id}>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -117,14 +142,18 @@ function ManageClass() {
                   <td className='text-md font-bold'>{course?.price}৳</td>
 
                   <td><div className="btn-group gap-2">
-                    <button className="btn btn-primary btn-xs text-white" onClick={() => handleApproved(course._id)}>Approve</button>
-                    <button className="btn btn-xs bg-[#FF7703] text-white" onClick={() => handleDenied(course._id)}>Deny</button>
+                    <button className={`btn btn-primary btn-xs text-white   ${(course.status == "approved" || course.status == "denied") && "cursor-not-allowed pointer-events-none	 opacity-30"}`} onClick={() => handleApproved(course._id)}>Approve</button>
+
+                    <button className={`btn btn-xs bg-[#FF7703] text-white ${(course.status == "approved" || course.status == "denied") && "cursor-not-allowed pointer-events-none	 opacity-30"}`} onClick={() => handleDenied(course._id)}>Deny</button>
                   </div>
                   </td>
-                  <td><div className="btn-group gap-2">
-
-                    <button className="btn btn-primary text-white btn-xs " onClick={() => window.my_modal_3.showModal()}>send feedback</button>
-                  </div>
+                  <td>
+                    <div className="btn-group gap-2">
+                      <button className="btn btn-primary text-white btn-xs " onClick={() => {
+                        setId(course._id)
+                        window.my_modal_3.showModal()
+                      }}>send feedback</button>
+                    </div>
                     <dialog id="my_modal_3" className="modal">
                       <form method="dialog" className="modal-box" onSubmit={handleSubmit(onSubmit)}>
 
@@ -143,21 +172,17 @@ function ManageClass() {
                           })}></textarea>
 
                         </div>
-                        <button className="btn btn-primary uppercase mt-5 text-white" type='submit'>Send feedback </button>
+                        <button className="btn bg-[#FF7703] hover:bg-[#FF7703] uppercase mt-5 text-white" type='submit'>Send feedback </button>
                       </form>
                       <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
+                        <button onClick={() => setId("")}>close</button>
                       </form>
                     </dialog>
                   </td>
 
 
-                </tr></>)
+                </tr>)
               }
-
-
-
-
 
             </tbody>
 
