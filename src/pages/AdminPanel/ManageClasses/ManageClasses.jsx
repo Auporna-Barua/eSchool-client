@@ -21,8 +21,29 @@ function ManageClass() {
   const onSubmit = async (data) => {
     reset()
   };
-  const handleClassEdit = async (id) => {
-
+  // approved classes functionality
+  const handleApproved = id => {
+    fetch(`http://localhost:5000/manageClass/approved/${id}`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Make Admin Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
   }
   return (
     <div>
@@ -72,7 +93,7 @@ function ManageClass() {
                   <td className='text-md font-bold'>{course?.price}৳</td>
 
                   <td><div className="btn-group gap-2">
-                    <button className="btn btn-primary btn-xs text-white">Approve</button>
+                    <button className="btn btn-primary btn-xs text-white" onClick={() => handleApproved(course._id)}>Approve</button>
                     <button className="btn btn-xs bg-[#FF7703] text-white">Deny</button>
                   </div>
                   </td>
