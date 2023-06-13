@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from 'react';
+import Swal from 'sweetalert2';
 
 import { useForm } from 'react-hook-form';
 import Tittle from '../../../components/metaTitle/Title';
@@ -9,10 +10,32 @@ const AddClass = () => {
 
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const form = useRef();
+  const token = localStorage.getItem('access-token');
+
   const onSubmit = async (data) => {
-    const allData = { ...data, instructor: user.displayName, email: user.email }
-    console.log("all data", allData);
-    // reset()
+    const allData = { ...data, instructor: user.displayName, email: user.email, status: "pending" }
+    fetch('http://localhost:5000/addClass', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `bearer ${token}`
+
+      },
+      body: JSON.stringify(allData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          Swal.fire({
+            icon: 'success',
+            text: 'Add new Class successful',
+          })
+
+          reset();
+
+        };
+      })
+
   };
   return (
     <div className=''>
