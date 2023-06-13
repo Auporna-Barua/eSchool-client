@@ -38,7 +38,31 @@ function ManageClass() {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Make Admin Successfully',
+            title: 'Class Approved Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
+  }
+  // deny classes functionality
+  const handleDenied = id => {
+    fetch(`http://localhost:5000/manageClass/deny/${id}`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Class Denied Successfully',
             showConfirmButton: false,
             timer: 1500
           })
@@ -94,7 +118,7 @@ function ManageClass() {
 
                   <td><div className="btn-group gap-2">
                     <button className="btn btn-primary btn-xs text-white" onClick={() => handleApproved(course._id)}>Approve</button>
-                    <button className="btn btn-xs bg-[#FF7703] text-white">Deny</button>
+                    <button className="btn btn-xs bg-[#FF7703] text-white" onClick={() => handleDenied(course._id)}>Deny</button>
                   </div>
                   </td>
                   <td><div className="btn-group gap-2">
