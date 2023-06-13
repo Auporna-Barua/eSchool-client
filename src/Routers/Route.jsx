@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import ManageClasses from "../pages/AdminPanel/ManageClasses/ManageClasses";
 import AddClass from "../pages/instructors/AddClass/AddClass";
 import MyClasses from "../pages/instructors/MyClasses/MyClasses";
+import EditClass from "../pages/instructors/EditClass/EditClass";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -83,6 +84,18 @@ const router = createBrowserRouter([
                         <MyClasses />
                     </PrivateRoute>
                 )
+            }, 
+            {
+                path: '/dashboard/editClass/:id',
+                element: (
+                    <PrivateRoute>
+                        <EditClass />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(
+                        `http://localhost:5000/editClass/${params.id}`
+                    ),
             },
         ]
     }

@@ -3,10 +3,12 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Tittle from '../../../components/metaTitle/Title';
 import { FaRegEdit } from 'react-icons/fa';
+import { Link, useNavigation } from 'react-router-dom';
 
 function MyClasses() {
   const token = localStorage.getItem('access-token');
   const { user } = useContext(AuthContext);
+  const navigation = useNavigation();
 
   const { data: classes = [], refetch } = useQuery(['classes'], async () => {
     const res = await fetch(`http://localhost:5000/myClasses/${user.email}`, {
@@ -17,7 +19,8 @@ function MyClasses() {
     return res.json();
   })
   const handleClassEdit = async (id) => {
-
+    console.log("hi", id);
+    navigation(`/dashboard/editClass/${id}`)
   }
   return (
     <div>
@@ -65,7 +68,11 @@ function MyClasses() {
                   <td>{course?.feedBack ? <div className="tooltip tooltip-left " data-tip={course.feedBack}>
                     <button className="btn bg-[#FF7703] text-white">Feedback</button>
                   </div> : "No FeedBack"}  </td>
-                  <td><button onClick={() => handleClassEdit(course._id)} className='p-2 hover:bg-[#FF7703] hover:text-white hover:rounded-full duration-500 w-fit'><FaRegEdit className='w-5 h-5 '></FaRegEdit></button></td>
+                  <td>
+                    <Link to={`/dashboard/editClass/${course._id}`}>
+                      <button onClick={() => handleClassEdit(course._id)} className='p-2 hover:bg-[#FF7703] hover:text-white hover:rounded-full duration-500 w-fit'><FaRegEdit className='w-5 h-5 '></FaRegEdit></button>
+                    </Link>
+                  </td>
 
                 </tr></>)
               }

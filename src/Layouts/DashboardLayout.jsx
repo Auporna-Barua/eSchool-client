@@ -61,13 +61,8 @@ const DashboardLayout = () => {
                         </div>
                     )}
 
-                    <div className="divider text-white font-bold">OR</div>
 
-                    <div className='space-y-3'>
-                
-                        <li><NavLink to={'/'} className='mt-2 bg-transparent p-2 font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 hover:rounded-md me-5'><FaEnvelope className='w-5 h-5'></FaEnvelope>Contact Us</NavLink></li>
-                        <li><NavLink to={'/'} className='mt-2 bg-transparent p-2 font-bold text-white  transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 hover:rounded-md me-5'><FaInfoCircle className='w-5 h-5'></FaInfoCircle>About</NavLink></li>
-                    </div>
+           
                 </ul>
             </div>
         </div>
