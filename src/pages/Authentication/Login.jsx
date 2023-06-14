@@ -72,7 +72,7 @@ const Login = () => {
                         </div>
 
                         <div>
-                            <input className='btn btn-outline hover:bg-transparent hover:text-white hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
+                            <input className='btn btn-outline hover:bg-transparent hover:text-white hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold hover:text-base text-base' type="submit" name="Submit" id="" value={'LogIn'} />
                         </div>
 
                         <div className="divider">OR</div>

@@ -12,7 +12,7 @@ const useAdmin = () => {
             if (!user) {
                 return []
             }
-            const res = await fetch(`http://localhost:5000/allUsers/admin/${user?.email}`, {
+            const res = await fetch(`https://e-school-mu.vercel.app/allUsers/admin/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }

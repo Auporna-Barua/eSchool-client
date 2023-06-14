@@ -6,7 +6,7 @@ import axios from 'axios';
 function Classes() {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/approveClasses`)
+        axios.get(`https://e-school-mu.vercel.app/approveClasses`)
             .then(function (response) {
 
                 setClasses(response.data);
@@ -30,7 +30,7 @@ function Classes() {
                 {
                     classes && classes.map(course => <ClassComponent key={course._id} course={course} />)
                 }
-                
+
             </div>
 
         </div>

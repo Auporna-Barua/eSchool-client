@@ -8,10 +8,12 @@ import Swal from 'sweetalert2';
 
 function ManageClass() {
   const token = localStorage.getItem('access-token');
-  const [id, setId] = useState("")
+  const [id, setId] = useState("");
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(true)
   const { user } = useContext(AuthContext);
   const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch(`http://localhost:5000/myClasses/${user.email}`, {
+    const res = await fetch(`https://e-school-mu.vercel.app/allClasses`, {
       headers: {
         authorization: `bearer ${token}`
       }
@@ -20,7 +22,7 @@ function ManageClass() {
   })
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
-    fetch(`http://localhost:5000/manageClass/feedback/${id}`, {
+    fetch(`https://e-school-mu.vercel.app/manageClass/feedback/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -46,7 +48,7 @@ function ManageClass() {
 
   // approved classes functionality
   const handleApproved = id => {
-    fetch(`http://localhost:5000/manageClass/approved/${id}`, {
+    fetch(`https://e-school-mu.vercel.app/manageClass/approved/${id}`, {
       method: 'PATCH',
       headers: {
         authorization: `bearer ${token}`,
@@ -69,7 +71,7 @@ function ManageClass() {
   }
   // deny classes functionality
   const handleDenied = id => {
-    fetch(`http://localhost:5000/manageClass/deny/${id}`, {
+    fetch(`https://e-school-mu.vercel.app/manageClass/deny/${id}`, {
       method: 'PATCH',
       headers: {
         authorization: `bearer ${token}`,
@@ -147,10 +149,10 @@ function ManageClass() {
                     <div className="btn-group gap-2">
                       <button className="btn btn-primary text-white btn-xs " onClick={() => {
                         setId(course._id)
-                        window.my_modal_3.showModal()
+                        setOpen(true)
                       }}>send feedback</button>
                     </div>
-                    <dialog id="my_modal_3" className="modal">
+                    <div id="my_modal_2" className="modal opa">
                       <form method="dialog" className="modal-box" onSubmit={handleSubmit(onSubmit)}>
 
                         <p className='text-left text-red-500'>
@@ -173,8 +175,10 @@ function ManageClass() {
                       <form method="dialog" className="modal-backdrop">
                         <button onClick={() => setId("")}>close</button>
                       </form>
-                    </dialog>
+                    </div>
                   </td>
+                  {/* Open the modal using ID.showModal() method */}
+
 
 
                 </tr>)

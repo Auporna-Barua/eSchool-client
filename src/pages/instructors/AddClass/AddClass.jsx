@@ -14,7 +14,7 @@ const AddClass = () => {
 
   const onSubmit = async (data) => {
     const allData = { ...data, instructor: user.displayName, email: user.email, status: "pending" }
-    fetch('http://localhost:5000/addClass', {
+    fetch('https://e-school-mu.vercel.app/addClass', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

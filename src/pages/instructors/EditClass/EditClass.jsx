@@ -19,7 +19,7 @@ const EditClass = () => {
     }
     const onSubmit = async (data) => {
         const allData = { name: classDetail.name, instructor: classDetail.instructor, photo: classDetail.photo, seats: classDetail.seats, price: classDetail.price, email: classDetail.email }
-        fetch(`http://localhost:5000/editClass/${classDetail?._id}`, {
+        fetch(`https://e-school-mu.vercel.app/editClass/${classDetail?._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

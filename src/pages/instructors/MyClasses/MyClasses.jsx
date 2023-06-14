@@ -11,7 +11,7 @@ function MyClasses() {
   const navigation = useNavigation();
 
   const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch(`http://localhost:5000/myClasses/${user.email}`, {
+    const res = await fetch(`https://e-school-mu.vercel.app/myClasses/${user.email}`, {
       headers: {
         authorization: `bearer ${token}`
       }

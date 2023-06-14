@@ -7,13 +7,14 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Tittle from '../../components/metaTitle/Title';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 function SelectedClass() {
   const token = localStorage.getItem('access-token');
   const { user } = useContext(AuthContext);
 
   const { data: classes = [], refetch } = useQuery(['selectedClass'], async () => {
-    const res = await fetch(`http://localhost:5000/selectedClasses/${user?.email}`, {
+    const res = await fetch(`https://e-school-mu.vercel.app/selectedClasses/${user?.email}`, {
       headers: {
         authorization: `bearer ${token}`,
         'content-type': 'application/json',
@@ -23,7 +24,7 @@ function SelectedClass() {
     return res.json();
   })
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/selectedClass/${id}`, {
+    fetch(`https://e-school-mu.vercel.app/selectedClass/${id}`, {
       method: 'DELETE',
       headers: {
         authorization: `bearer ${token}`,
@@ -92,7 +93,9 @@ function SelectedClass() {
 
                   </td>
                   <td>
-                    <button className={`btn btn-sm text-white bg-red-500 rounded-full`} onClick={() => handleApproved(course._id)}><GiPayMoney size={20} /> Pay Now</button>
+                    <Link to={`/dashboard/payment/${course._id}`}>
+                      <button className={`btn btn-sm text-white bg-red-500 rounded-full`} ><GiPayMoney size={20} />  Pay Now</button>
+                    </Link>
 
                   </td>
 

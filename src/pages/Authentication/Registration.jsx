@@ -33,7 +33,7 @@ const Registration = () => {
                     })
                     const savedUser = { name: name, email: email, role: "student" }
 
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://e-school-mu.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -135,7 +135,7 @@ const Registration = () => {
                         </div>
 
                         <div>
-                            <input className='btn btn-outline hover:bg-transparent hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold text-base hover:text-white' type="submit" name="Submit" id="" value={'SingUp'} />
+                            <input className='btn btn-outline hover:bg-transparent hover:border-[#FF7703] hover:border-2 border-[#FF7703] border-2 hover:bg-[#FF7703] duration-300 w-full font-bold text-base hover:text-base' type="submit" name="Submit" id="" value={'SingUp'} />
                         </div>
 
                         <div className="divider">OR</div>

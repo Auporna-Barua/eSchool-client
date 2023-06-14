@@ -9,7 +9,7 @@ const AllUsers = () => {
     const token = localStorage.getItem('access-token');
 
     const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
-        const res = await fetch('http://localhost:5000/allUsers', {
+        const res = await fetch('https://e-school-mu.vercel.app/allUsers', {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -19,7 +19,7 @@ const AllUsers = () => {
 
     // Make Admin functionality
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/allUsers/admin/${id}`, {
+        fetch(`https://e-school-mu.vercel.app/allUsers/admin/${id}`, {
             method: 'PATCH',
             headers: {
                 authorization: `bearer ${token}`,
@@ -43,7 +43,7 @@ const AllUsers = () => {
 
     //Make instructor functionality 
     const handleMakeMusician = id => {
-        fetch(`http://localhost:5000/allUsers/musician/${id}`, {
+        fetch(`https://e-school-mu.vercel.app/allUsers/musician/${id}`, {
             method: 'PATCH',
             headers: {
                 authorization: `bearer ${token}`,
@@ -67,7 +67,7 @@ const AllUsers = () => {
 
     // deleted user functionality
     const handleDeleteUser = (id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://e-school-mu.vercel.app/user/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${token}`,

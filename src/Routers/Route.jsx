@@ -15,6 +15,7 @@ import MyClasses from "../pages/instructors/MyClasses/MyClasses";
 import EditClass from "../pages/instructors/EditClass/EditClass";
 import SelectedClass from "../pages/MySelectedClass/SelectedClass";
 import EnrolledClass from "../pages/EnrolledClasses/EnrolledClass";
+import Payment from "../pages/Payment/Payment";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -86,7 +87,7 @@ const router = createBrowserRouter([
                         <MyClasses />
                     </PrivateRoute>
                 )
-            }, 
+            },
             {
                 path: '/dashboard/editClass/:id',
                 element: (
@@ -96,7 +97,7 @@ const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `http://localhost:5000/editClass/${params.id}`
+                        `https://e-school-mu.vercel.app/editClass/${params.id}`
                     ),
             },
             {
@@ -114,6 +115,18 @@ const router = createBrowserRouter([
                         <EnrolledClass />
                     </PrivateRoute>
                 )
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: (
+                    <PrivateRoute>
+                        <Payment />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(
+                        `https://e-school-mu.vercel.app/singleClass/${params.id}`
+                    ),
             },
         ]
     }

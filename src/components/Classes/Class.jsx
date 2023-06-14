@@ -8,7 +8,7 @@ function Class({ course }) {
     const { user } = useContext(AuthContext);
     const token = localStorage.getItem('access-token');
     const handleSelect = (course) => {
-        fetch(`http://localhost:5000/selectedClass/${user.email}`, {
+        fetch(`https://e-school-mu.vercel.app/selectedClass/${user.email}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
