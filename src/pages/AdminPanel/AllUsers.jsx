@@ -73,7 +73,6 @@ const AllUsers = () => {
                 authorization: `bearer ${token}`,
                 'Content-Type': 'application/json'
             }
-
         })
             .then(res => res.json())
             .then(data => {

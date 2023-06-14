@@ -1,32 +1,30 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import { GiPayMoney } from 'react-icons/gi';
 
-import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Tittle from '../../components/metaTitle/Title';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 function SelectedClass() {
   const token = localStorage.getItem('access-token');
-  const [id, setId] = useState("")
   const { user } = useContext(AuthContext);
-  const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch(`http://localhost:5000/myClasses/${user.email}`, {
+
+  const { data: classes = [], refetch } = useQuery(['selectedClass'], async () => {
+    const res = await fetch(`http://localhost:5000/selectedClasses/${user?.email}`, {
       headers: {
-        authorization: `bearer ${token}`
+        authorization: `bearer ${token}`,
+        'content-type': 'application/json',
+
       }
     })
     return res.json();
   })
-
-
-
-  // deny classes functionality
-  const handleDenied = id => {
-    fetch(`http://localhost:5000/manageClass/deny/${id}`, {
-      method: 'PATCH',
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/selectedClass/${id}`, {
+      method: 'DELETE',
       headers: {
         authorization: `bearer ${token}`,
         'Content-Type': 'application/json'
@@ -34,18 +32,20 @@ function SelectedClass() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.modifiedCount) {
+        console.log(data);
+        if (data.deletedCount == 1) {
           refetch();
           Swal.fire({
-            position: 'center',
             icon: 'success',
-            title: 'Class Denied Successfully',
-            showConfirmButton: false,
-            timer: 1500
+            text: 'Unselected successful',
           })
-        }
+
+        };
       })
   }
+
+
+
   return (
     <div>
       <Tittle heading={"My selected Classes"} />
@@ -66,7 +66,7 @@ function SelectedClass() {
             <tbody>
               {/* row 1 */}
               {
-                classes && classes.map(course => <tr key={course._id}>
+                classes.length > 0 ? classes.map(course => <tr key={course._id}>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -84,21 +84,20 @@ function SelectedClass() {
                     <br />
                     <span className="badge badge-ghost badge-sm">{course.email}</span>
                   </td>
-               
+
                   <td className='text-md font-bold'>{course?.price}৳</td>
 
                   <td>
-                    <button className={`btn  btn-xs text-white bg-red-500 rounded-full`} onClick={() => handleApproved(course._id)}><AiOutlineDelete size={22} /> </button>
+                    <button className={`btn  btn-xs text-white bg-red-500 rounded-full`} onClick={() => handleDelete(course._id)}><AiOutlineDelete size={22} /> </button>
 
                   </td>
                   <td>
                     <button className={`btn btn-sm text-white bg-red-500 rounded-full`} onClick={() => handleApproved(course._id)}><GiPayMoney size={20} /> Pay Now</button>
 
                   </td>
-              
-
 
                 </tr>)
+                  : <h2 className='text-3xl mt-10 block text-center'>No Selected Item here</h2>
               }
 
             </tbody>
