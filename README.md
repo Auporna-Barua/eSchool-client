@@ -1,4 +1,4 @@
-# Musicy
+# project name: Musicy
 
 ## Live Preview 1: https://eschool-8816a.web.app/
 

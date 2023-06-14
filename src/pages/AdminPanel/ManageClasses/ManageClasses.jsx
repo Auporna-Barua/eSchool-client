@@ -10,7 +10,6 @@ function ManageClass() {
   const token = localStorage.getItem('access-token');
   const [id, setId] = useState("");
   const [open, setOpen] = useState(false);
-  const [close, setClose] = useState(true)
   const { user } = useContext(AuthContext);
   const { data: classes = [], refetch } = useQuery(['classes'], async () => {
     const res = await fetch(`https://e-school-mu.vercel.app/allClasses`, {
@@ -38,9 +37,8 @@ function ManageClass() {
             icon: 'success',
             text: 'Add new feedback successful',
           })
-
           reset();
-
+          setOpen(false)
         };
       })
 
@@ -152,33 +150,38 @@ function ManageClass() {
                         setOpen(true)
                       }}>send feedback</button>
                     </div>
-                    <div id="my_modal_2" className="modal opa">
-                      <form method="dialog" className="modal-box" onSubmit={handleSubmit(onSubmit)}>
+                    <div id="my_modal_2" className={`modal ${open && "opacity-95 pointer-events-auto"} `}>
+                      <div className="modal-box">
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => {
+                          setId("")
+                          setOpen(false)
+                        }}>✕</button>
+                        <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
 
-                        <p className='text-left text-red-500'>
-                          {errors.message?.type === 'required' && <span>{errors.message.message}</span>}
-                        </p>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text text-base">Explain feedback*</span>
-                          </label>
-                          <textarea className="textarea textarea-primary h-32" placeholder="Please explain feedback..." {...register("message", {
-                            required: {
-                              value: true,
-                              message: 'Write Some Feedback*'
-                            }
-                          })}></textarea>
+                          <p className='text-left text-red-500'>
+                            {errors.message?.type === 'required' && <span>{errors.message.message}</span>}
+                          </p>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-base">Explain feedback*</span>
+                            </label>
+                            <textarea className="textarea textarea-primary h-32" placeholder="Please explain feedback..." {...register("message", {
+                              required: {
+                                value: true,
+                                message: 'Write Some Feedback*'
+                              }
+                            })}></textarea>
 
-                        </div>
-                        <button className="btn bg-[#FF7703] hover:bg-[#FF7703] uppercase mt-5 text-white" type='submit'>Send feedback </button>
-                      </form>
-                      <form method="dialog" className="modal-backdrop">
-                        <button onClick={() => setId("")}>close</button>
-                      </form>
+                          </div>
+                          <button className="btn bg-[#FF7703] hover:bg-[#FF7703] uppercase mt-5 text-white" type='submit'>Send feedback </button>
+                        </form>
+                      </div>
+
+
+
+
                     </div>
                   </td>
-                  {/* Open the modal using ID.showModal() method */}
-
 
 
                 </tr>)
