@@ -14,8 +14,8 @@ function InstructorComponent({ page, instructor }) {
                     page && <p className='text-center'>email: {instructor?.email}</p>
                 }
 
-                <div className='flex items-center justify-center'>
-                  
+                <div className='flex items-center justify-between'>
+                    <div className='flex items-center gap-2'><FcManager size={20} /> <span className='text-md font-bold capitalize text-gray-500'>{instructor?.students} students</span></div>
                     <div className="card-actions justify-center">
                         <div className='flex items-center gap-2'>
                             <BsFacebook size={20} color='#FF7703' />
@@ -23,6 +23,7 @@ function InstructorComponent({ page, instructor }) {
                             <BsInstagram size={20} color='#FF7703' />
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

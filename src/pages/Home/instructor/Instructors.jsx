@@ -26,12 +26,8 @@ function Instructors() {
             </div>
             <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
                 {
-                    instructors && instructors.map(instructor => (<InstructorComponent key={instructor._id} instructor={instructor} />))
+                    instructors && instructors.slice(0,6).map(instructor => (<InstructorComponent key={instructor._id} instructor={instructor} />))
                 }
-
-
-
-
             </div>
 
         </div>

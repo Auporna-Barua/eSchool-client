@@ -91,7 +91,7 @@ const CheckoutForm = ({ course }) => {
 
             }
             const status = "paid";
-            const url = `http://localhost:5000/enroll/paid/${id}`;
+            const url = `https://e-school-mu.vercel.app/enroll/paid/${id}`;
             fetch(url, {
                 method: "POST",
                 headers: {
