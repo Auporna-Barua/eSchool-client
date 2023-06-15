@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                         </div>
                     )}
 
-                    {isAdmin[1] == "student" && (
+                    {(isAdmin[1] == "student" || isAdmin[1] == undefined) && (
                         <div className='space-y-3'>
                             <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-white  text-lg duration-300 font-bold ' : 'font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUser className='w-5 h-5'></FaUser> Student Home</NavLink></li>
 
@@ -62,7 +62,7 @@ const DashboardLayout = () => {
                     )}
 
 
-           
+
                 </ul>
             </div>
         </div>

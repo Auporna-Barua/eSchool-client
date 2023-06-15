@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const CheckoutForm = ({ course }) => {
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
-    const { price } = course;
+    const { price, _id: id } = course;
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState("");
@@ -81,34 +81,38 @@ const CheckoutForm = ({ course }) => {
             console.log(intentError);
         }
         if (paymentIntent.status === 'succeeded') {
-            console.log("paymentIntent", paymentIntent);
             setTransactionId(paymentIntent.id);
+            const payment = {
+                ...course,
+                studentEmail: user?.email,
+                transactionId: paymentIntent.id,
+                date: new Date(),
+                paymentStatus: 'paid',
 
+            }
             const status = "paid";
-            const url = `https://e-school-mu.vercel.app/enroll/paid/${paymentData._id}`;
+            const url = `http://localhost:5000/enroll/paid/${id}`;
             fetch(url, {
-                method: "PUT",
+                method: "POST",
                 headers: {
                     "content-type": "application/json",
-                },
-                body: JSON.stringify({ status }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log("success", data);
-                    // alert('Quantity updated successfully');
-                });
-            setCardError("");
-            setTransactionId(paymentIntent.id);
-            console.log(paymentIntent);
-            Swal.fire({
-                icon: 'success',
-                text: 'Congrats! Your Payment is completed',
-            })
+                    authorization: `bearer ${token}`,
 
-            setPaymentSuccess(`Congrats! Your Payment is completed`);
-            setLoading(false);
-            event.target.reset();
+                },
+                body: JSON.stringify(payment),
+            }).then((res) => res.json()).then((data) => {
+                if (data) {
+                    setCardError("");
+                    setLoading(false);
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'Congrats! Your Payment is completed',
+                    })
+                    setPaymentSuccess(`Congrats! Your Payment is completed`);
+                    event.target.reset();
+                }
+            });
+
         }
     };
     return (
