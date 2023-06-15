@@ -28,7 +28,7 @@ function Classes() {
             </div>
             <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
                 {
-                    classes && classes.map(course => <ClassComponent key={course._id} course={course} />)
+                    classes && classes.slice(0,6).map(course => <ClassComponent key={course._id} course={course} />)
                 }
 
             </div>
