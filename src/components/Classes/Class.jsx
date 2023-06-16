@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
+import { Bounce } from 'react-awesome-reveal';
 
 function Class({ course }) {
     const { user } = useContext(AuthContext);
@@ -33,6 +34,7 @@ function Class({ course }) {
             })
     }
     return (
+        <Bounce cascade damping={0.1}>
         <div className={`card card-compact  bg-base-100  shadow-xl ${course?.seats < 1 && "bg-red-600"}`}>
             <figure><img src={course.photo} alt="Shoes" /></figure>
             <div className="card-body">
@@ -40,7 +42,7 @@ function Class({ course }) {
 
                 <div className="card-actions justify-between">
                     <div className='flex items-center gap-2'><FcManager size={20} /> <span className={`text-md font-bold capitalize text-gray-500 ${course?.seats < 1 && "text-white"}`}>{course.instructor}</span></div>
-                    <div className={`flex items-center gap-2 ${course?.seats < 1 && "text-white" }`}><AiOutlineHeart size={20} color={"#FF7703"} /> <span className='text-md font-bold capitalize text-gray-500'>{course.enroll ? course.enroll : "0"} Student</span></div>
+                    {/* <div className={`flex items-center gap-2 ${course?.seats < 1 && "text-white" }`}><AiOutlineHeart size={20} color={"#FF7703"} /> <span className='text-md font-bold capitalize text-gray-500'>{course.enroll ? course.enroll : "0"} Student</span></div> */}
                 </div>
                 <div className="card-actions">
                     <div className='flex items-center gap-2'>
@@ -63,6 +65,8 @@ function Class({ course }) {
                 </div>
             </div>
         </div>
+            </Bounce>
+
     )
 }
 

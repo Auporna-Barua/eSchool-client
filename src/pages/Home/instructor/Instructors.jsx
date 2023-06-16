@@ -21,8 +21,8 @@ function Instructors() {
         <div>
             <div className=' w-10/12 mx-auto text-center my-10'>
 
-                <h4 className='text-xl text-[#FF7703] font-bold'>Our Instructors</h4>
-                <h2 className='text-4xl font-bold text-gray-500'>Meet Popular Instructors</h2>
+                <h4 className='text-lg md:text-xl text-[#FF7703] font-bold'>Our Instructors</h4>
+                <h2 className='text-2xl md:text-4xl font-bold text-gray-500'>Meet Popular Instructors</h2>
             </div>
             <div className=' w-11/12 md:w-10/12 mx-auto grid-item my-10'>
                 {
