@@ -17,6 +17,8 @@ import SelectedClass from "../pages/MySelectedClass/SelectedClass";
 import EnrolledClass from "../pages/EnrolledClasses/EnrolledClass";
 import Payment from "../pages/Payment/Payment";
 import PaymentHistory from "../pages/PaymentHistrory/PaymentHistory";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -47,54 +49,41 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/allUsers',
                 element: (
-                    <PrivateRoute>
-                        <AllUsers />
-                    </PrivateRoute>
+                    <AllUsers />
                 )
             },
             {
                 path: '/dashboard/manageClass',
                 element: (
-                    <PrivateRoute>
-                        <ManageClasses />
-                    </PrivateRoute>
+                    <ManageClasses />
                 )
             },
+
             {
                 path: '/dashboard/addClass',
                 element: (
-                    <PrivateRoute>
-                        <AddClass />
-                    </PrivateRoute>
-                )
-            },
-            {
-                path: '/dashboard/addClass',
-                element: (
-                    <PrivateRoute>
-                        <AddClass />
-                    </PrivateRoute>
+
+                    <AddClass />
+
                 )
             },
             {
                 path: '/dashboard/myClass',
                 element: (
-                    <PrivateRoute>
-                        <MyClasses />
-                    </PrivateRoute>
+                    <MyClasses />
+
                 )
             },
             {
                 path: '/dashboard/editClass/:id',
                 element: (
-                    <PrivateRoute>
-                        <EditClass />
-                    </PrivateRoute>
+                    <EditClass />
+
                 ),
                 loader: ({ params }) =>
                     fetch(
@@ -104,33 +93,25 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/selectedclass',
                 element: (
-                    <PrivateRoute>
-                        <SelectedClass />
-                    </PrivateRoute>
+                    <SelectedClass />
                 )
             },
             {
                 path: '/dashboard/enrolledClass',
                 element: (
-                    <PrivateRoute>
-                        <EnrolledClass />
-                    </PrivateRoute>
+                    <EnrolledClass />
                 )
             },
             {
                 path: '/dashboard/history',
                 element: (
-                    <PrivateRoute>
-                        <PaymentHistory />
-                    </PrivateRoute>
+                    <PaymentHistory />
                 )
             },
             {
                 path: '/dashboard/payment/:id',
                 element: (
-                    <PrivateRoute>
-                        <Payment />
-                    </PrivateRoute>
+                    <Payment />
                 ),
                 loader: ({ params }) =>
                     fetch(

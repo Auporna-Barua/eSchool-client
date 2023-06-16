@@ -5,7 +5,6 @@ import { GiPayMoney } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Tittle from '../../components/metaTitle/Title';
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 

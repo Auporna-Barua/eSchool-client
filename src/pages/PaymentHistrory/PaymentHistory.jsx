@@ -10,7 +10,7 @@ function PaymentHistory() {
     const { user } = useContext(AuthContext);
 
     const { data: classes = [], refetch } = useQuery(['paymenthistory'], async () => {
-        const res = await fetch(`http://localhost:5000/paymenthistory/${user?.email}`, {
+        const res = await fetch(`https://e-school-mu.vercel.app/paymenthistory/${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`,
                 'content-type': 'application/json',
@@ -67,9 +67,9 @@ function PaymentHistory() {
 
                                     </td>
                                     <td>
-                                            <button className={`btn btn-sm text-white bg-red-500 rounded-full`} >
+                                        <button className={`btn btn-sm text-white bg-red-500 rounded-full`} >
                                             {moment(course.date).format("YYYY-MM-DD, h:mm:ss a")}
-                                            </button>
+                                        </button>
 
                                     </td>
 
