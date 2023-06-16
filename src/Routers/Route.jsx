@@ -16,6 +16,7 @@ import EditClass from "../pages/instructors/EditClass/EditClass";
 import SelectedClass from "../pages/MySelectedClass/SelectedClass";
 import EnrolledClass from "../pages/EnrolledClasses/EnrolledClass";
 import Payment from "../pages/Payment/Payment";
+import PaymentHistory from "../pages/PaymentHistrory/PaymentHistory";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -113,6 +114,14 @@ const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <EnrolledClass />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: '/dashboard/history',
+                element: (
+                    <PrivateRoute>
+                        <PaymentHistory />
                     </PrivateRoute>
                 )
             },

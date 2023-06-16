@@ -57,7 +57,8 @@ const DashboardLayout = () => {
 
                             <li><NavLink to={'/dashboard/selectedclass'} className={({ isActive }) => (isActive ? 'text-white  text-lg duration-300 font-bold ' : 'font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookOpen className='w-5 h-5'></FaBookOpen> My Selected Classes</NavLink></li>
 
-                            <li><NavLink to={'/dashboard/enrolledClass'} className={({ isActive }) => (isActive ? 'text-white  text-lg duration-300 font-bold ' : 'font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Enrolled Classes</NavLink></li>
+                            <li><NavLink to={'/dashboard/enrolledClass'} className={({ isActive }) => (isActive ? 'text-white  text-lg duration-300 font-bold ' : 'font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Enrolled Classes</NavLink></li> 
+                            <li><NavLink to={'/dashboard/history'} className={({ isActive }) => (isActive ? 'text-white  text-lg duration-300 font-bold ' : 'font-bold text-white transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Payment history</NavLink></li>
                         </div>
                     )}
 

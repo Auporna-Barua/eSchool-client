@@ -23,27 +23,7 @@ function EnrolledClass() {
     })
     return res.json();
   })
-  const handleDelete = (id) => {
-    fetch(`https://e-school-mu.vercel.app/selectedClass/${id}`, {
-      method: 'DELETE',
-      headers: {
-        authorization: `bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.deletedCount == 1) {
-          refetch();
-          Swal.fire({
-            icon: 'success',
-            text: 'Unselected successful',
-          })
-
-        };
-      })
-  }
+ 
 
 
 
