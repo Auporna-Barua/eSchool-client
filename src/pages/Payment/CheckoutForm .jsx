@@ -78,7 +78,6 @@ const CheckoutForm = ({ course }) => {
             setCardError(intentError?.message);
             setPaymentSuccess("");
             setLoading(false);
-            console.log(intentError);
         }
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
@@ -90,7 +89,6 @@ const CheckoutForm = ({ course }) => {
                 paymentStatus: 'paid',
 
             }
-            const status = "paid";
             const url = `https://e-school-mu.vercel.app/enroll/paid/${id}`;
             fetch(url, {
                 method: "POST",
